@@ -627,13 +627,13 @@ export const cartData = [
 
 export const chatData = [
   {
-    image: avatar2,
+    image: avatar3,
     message: "Roman Joined the Team!",
     desc: "Congratulate him",
     time: "9:08 AM",
   },
   {
-    image: avatar3,
+    image: avatar2,
     message: "New message received",
     desc: "Salma sent you new message",
     time: "11:56 AM",
@@ -645,7 +645,7 @@ export const chatData = [
     time: "4:39 AM",
   },
   {
-    image: avatar,
+    image: avatar2,
     message: "Jolly completed tasks",
     desc: "Assign her new tasks",
     time: "1:12 AM",

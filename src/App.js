@@ -1,9 +1,9 @@
 import "./App.css";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { TooltipComponent } from "@syncfusion/ej2-react-popups";
 import { FiSettings } from "react-icons/fi";
-import { Footer, Navbar, Sidebar, ThemeSettings } from "./components";
+import { Navbar, Sidebar, ThemeSettings } from "./components";
 import {
   Area,
   Bar,
@@ -36,8 +36,8 @@ const App = () => {
   } = useStateContext();
 
   useEffect(() => {
-    setCurrentColor(localStorage.getItem("themeColor"));
-    setCurrentMode(localStorage.getItem("themeMode"));
+    setCurrentColor(localStorage.getItem("themeColor") || "#0080FF");
+    setCurrentMode(localStorage.getItem("themeMode") || "Light");
   }, [setCurrentColor, setCurrentMode]);
 
   return (

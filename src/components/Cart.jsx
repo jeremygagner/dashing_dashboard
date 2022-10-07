@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef } from "react";
+import React, { useCallback, useEffect } from "react";
 import { MdOutlineCancel } from "react-icons/md";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 
@@ -10,14 +10,6 @@ const Cart = () => {
 
   const { currentColor, handleClose } = useStateContext();
 
-  const cartRef = useRef(null);
-
-  const handleClickOut = useCallback((event) => {
-    if (cartRef.current && !cartRef.current.contains(event.target)) {
-      handleClose("cart");
-    }
-  }, [handleClose]);
-
   const handleEscape = useCallback((event) => {
     if (event.key === "Escape") {
       handleClose("cart");
@@ -26,17 +18,15 @@ const Cart = () => {
 
   useEffect(() => {
     document.addEventListener("keydown", handleEscape, false);
-    document.addEventListener("mousedown", handleClickOut, false);
 
     return () => {
       document.removeEventListener("keydown", handleEscape, false);
-      document.removeEventListener("mousedown", handleClickOut, false);
     };
-  }, [handleClickOut, handleEscape]);
+  }, [handleEscape]);
 
   return (
     <div className="bg-half-transparent w-full fixed nav-item top-0 right-0 ">
-      <div ref={cartRef} className="float-right h-screen  duration-1000 ease-in-out dark:text-gray-200 transition-all dark:bg-[#484B52] bg-white md:w-400 p-8">
+      <div className="float-right h-screen  duration-1000 ease-in-out dark:text-gray-200 transition-all dark:bg-[#484B52] bg-white md:w-400 p-8">
         <div className="flex justify-between items-center">
           <p className="font-semibold text-lg">Shopping Cart</p>
           <Button

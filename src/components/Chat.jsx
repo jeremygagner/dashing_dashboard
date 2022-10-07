@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef } from "react";
+import React, { useCallback, useEffect } from "react";
 import { MdOutlineCancel } from "react-icons/md";
 
 import { Button } from ".";
@@ -7,17 +7,6 @@ import { useStateContext } from "../contexts/ContextProvider";
 
 const Chat = () => {
   const { currentColor, handleClose } = useStateContext();
-
-  const chatRef = useRef(null);
-
-  const handleClickOut = useCallback(
-    (event) => {
-      if (chatRef.current && !chatRef.current.contains(event.target)) {
-        handleClose("chat");
-      }
-    },
-    [handleClose]
-  );
 
   const handleEscape = useCallback(
     (event) => {
@@ -30,17 +19,14 @@ const Chat = () => {
 
   useEffect(() => {
     document.addEventListener("keydown", handleEscape, false);
-    document.addEventListener("mousedown", handleClickOut, false);
 
     return () => {
       document.removeEventListener("keydown", handleEscape, false);
-      document.removeEventListener("mousedown", handleClickOut, false);
     };
-  }, [handleClickOut, handleEscape]);
+  }, [handleEscape]);
 
   return (
     <div
-      ref={chatRef}
       className="nav-item absolute right-5 md:right-52 top-16 bg-white dark:bg-[#42464D] p-8 rounded-lg w-96"
     >
       <div className="flex justify-between items-center">
@@ -59,6 +45,7 @@ const Chat = () => {
           color={currentColor}
           size="2xl"
           borderRadius="50%"
+          customFunction={() => handleClose("chat")}
         />
       </div>
       <div className="mt-5 ">

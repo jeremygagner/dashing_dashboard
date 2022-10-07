@@ -1,11 +1,9 @@
 import React from "react";
-import { money } from "@mui/icons-material";
 import CircleIcon from "@mui/icons-material/Circle";
-import { Stacked, Pie, Button, SparkLine } from "../components";
+import { Stacked, Button, SparkLine } from "../components";
 import {
   earningData,
   SparklineAreaData,
-  ecomPieChartData,
 } from "../data/dummy";
 import { useStateContext } from "../contexts/ContextProvider";
 
